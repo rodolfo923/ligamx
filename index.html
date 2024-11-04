@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos de la Liga MX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .team {
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .team img {
+            width: 200px;
+            height: 150px;
+        }
+
+        .history {
+            display: none;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px auto;
+            width: 50%;
+            position: relative;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Equipos de la Liga MX</h1>
+    <div class="team-container">
+        <div class="team" onclick="showHistory('pumas')">
+            <img src="gato.png" alt="Pumas UNAM">
+            <p>Pumas UNAM</p>
+        </div>
+        <div class="team" onclick="showHistory('america')">
+            <img src="ame.png" alt="Club América">
+            <p>Club América</p>
+        </div>
+        <div class="team" onclick="showHistory('chivas')">
+            <img src="chiva.png" alt="Chivas">
+            <p>Guadalajara (Chivas)</p>
+        </div>
+        <div class="team" onclick="showHistory('tigres')">
+            <img src="tigres.jpg" alt="Tigres UANL">
+            <p>Tigres UANL</p>
+        </div>
+        <div class="team" onclick="showHistory('cruzazul')">
+            <img src="azul.png" alt="Cruz Azul">
+            <p>Cruz Azul</p>
+        </div>
+        <div class="team" onclick="showHistory('monterrey')">
+            <img src="monte.png" alt="Monterrey">
+            <p>Monterrey</p>
+        </div>
+        <div class="team" onclick="showHistory('leon')">
+            <img src="leon.jpeg" alt="León">
+            <p>León</p>
+        </div>
+        <div class="team" onclick="showHistory('puebla')">
+            <img src="puebla.jpeg" alt="Puebla">
+            <p>Puebla</p>
+        </div>
+        <div class="team" onclick="showHistory('necaxa')">
+            <img src="necaxa.png" alt="Necaxa">
+            <p>Necaxa</p>
+        </div>
+        <div class="team" onclick="showHistory('toluca')">
+            <img src="diablo.png" alt="Toluca">
+            <p>Toluca</p>
+        </div>
+        <div class="team" onclick="showHistory('mazatlan')">
+            <img src="maza.png" alt="Mazatlán">
+            <p>Mazatlán</p>
+        </div>
+        <div class="team" onclick="showHistory('pachuca')">
+            <img src="pachuca.png" alt="Pachuca">
+            <p>Pachuca</p>
+        </div>
+        <div class="team" onclick="showHistory('santos')">
+            <img src="santos.png" alt="Santos">
+            <p>Santos</p>
+        </div>
+        <div class="team" onclick="showHistory('queretaro')">
+            <img src="quere.png" alt="Querétaro">
+            <p>Querétaro</p>
+        </div>
+        <div class="team" onclick="showHistory('sanluis')">
+            <img src="san.jpeg" alt="San Luis">
+            <p>San Luis</p>
+        </div>
+        <div class="team" onclick="showHistory('atlas')">
+            <img src="atlas.png" alt="Atlas">
+            <p>Atlas</p>
+        </div>
+        <div class="team" onclick="showHistory('juarez')">
+            <img src="juarez.png" alt="Juárez">
+            <p>Juárez</p>
+        </div>
+        <div class="team" onclick="showHistory('tijuana')">
+            <img src="tijua.png" alt="Tijuana">
+            <p>Tijuana</p>
+        </div>
+    </div>
+
+    <div id="history" class="history">
+        <h2 id="team-name"></h2>
+        <p id="team-history"></p>
+        <h3>Jugadores destacados:</h3>
+        <ul id="team-players"></ul>
+        <button onclick="hideHistory()">Cerrar</button>
+    </div>
+
+    <script>
+        const histories = {
+            pumas: {
+                name: "Pumas UNAM",
+                history: "Pumas UNAM es un equipo de fútbol de México, fundado el 2 de agosto de 1954. Es parte de la Universidad Nacional Autónoma de México. Han ganado varios campeonatos y su estadio es el Estadio Olímpico Universitario.",
+                players: ["Dario veron","Claudio Suarez","Hugo Sanchez","Ricardo Tuca Ferreti"]
+            },
+            america: {
+                name: "Club América",
+                history: "Club América fue fundado en 1916 y es uno de los clubes más exitosos de México. Tiene una gran rivalidad con Chivas y su estadio es el Estadio Azteca.",
+                players: ["Cuauhtemo blanco","Zague","Luis el matador hernandez","Angel Reyna"]
+            },
+            chivas: {
+                name: "Guadalajara (Chivas)",
+                history: "Chivas fue fundado en 1906. Se destaca por jugar solo con mexicanos y tiene una gran base de seguidores. Juegan en el Estadio Akron.",
+                players: ["Salvador el chava reyes","el cholo diaz","Manuel Cardenaz"]
+            },
+            tigres: {
+                name: "Tigres UANL",
+                history: "Tigres fue fundado en 1960 y ha ganado varios campeonatos. Su estadio es el Estadio Universitario y tienen una fuerte rivalidad con Monterrey.",
+                players: ["André-Pierre Gignac", "Nahuel Guzmán", "Javier Aquino"]
+            },
+            cruzazul: {
+                name: "Cruz Azul",
+                history: "Cruz Azul fue fundado en 1927 y tiene una rica historia en el fútbol mexicano. Su estadio es el Estadio Azteca.",
+                players: ["José de Jesús Corona", "Pablo Aguilar", "Julio César Domínguez"]
+            },
+            monterrey: {
+                name: "Monterrey",
+                history: "Monterrey fue fundado en 1945 y es uno de los clubes más importantes de México. Juegan en el Estadio BBVA.",
+                players: ["Hugo González", "Rogelio Funes Mori", "Carlos Rodríguez"]
+            },
+            leon: {
+                name: "León",
+                history: "León fue fundado en 1944 y ha sido campeón en varias ocasiones. Su estadio es el Estadio León.",
+                players: ["William Tesillo", "Fernando Navarro", "Yairo Moreno"]
+            },
+            puebla: {
+                name: "Puebla",
+                history: "Puebla fue fundado en 1944 y es uno de los equipos tradicionales de México. Han tenido varios éxitos en torneos nacionales.",
+                players: ["Cristian Menéndez", "Pablo González", "Julio González"]
+            },
+            necaxa: {
+                name: "Necaxa",
+                history: "Necaxa fue fundado en 1923 y ha tenido una larga historia en la liga. Han tenido muchos éxitos en el pasado.",
+                players: ["Luis Ángel Landín", "Victor Manuel Ruiz", "Matías Fernández"]
+            },
+            toluca: {
+                name: "Toluca",
+                history: "Toluca fue fundado en 1917 y ha ganado muchos campeonatos. Su estadio es el Estadio Nemesio Diez.",
+                players: ["Alfredo Talavera", "Joaquín Martínez", "Santiago García"]
+            },
+            mazatlan: {
+                name: "Mazatlán",
+                history: "Mazatlán FC es un equipo nuevo, fundado en 2020, que busca hacer historia en el fútbol mexicano.",
+                players: ["Nicolás Vikonis", "Joaquín Ibáñez", "José Ortiz"]
+            },
+            pachuca: {
+                name: "Pachuca",
+                history: "Pachuca fue fundado en 1892 y es uno de los equipos más antiguos de México. Han ganado varios títulos.",
+                players: ["Oscar Pérez", "Ezequiel Andrade", "Cristian Ferreira"]
+            },
+            santos: {
+                name: "Santos",
+                history: "Santos fue fundado en 1983 y ha tenido éxito en la liga, destacándose por su estilo de juego ofensivo.",
+                players: ["Jonathan Rodríguez", "Djaniny Tavares", "Gibran Lajud"]
+            },
+            queretaro: {
+                name: "Querétaro",
+                history: "Querétaro fue fundado en 1950 y ha tenido altibajos, pero tiene muchos aficionados leales.",
+                players: ["Hugo Silveira", "Ezequiel Centurión", "Kevin Ramírez"]
+            },
+            sanluis: {
+                name: "San Luis",
+                history: "San Luis ha tenido varias etapas, con su última fundación en 2013. Buscan establecerse en la liga.",
+                players: ["Gonzalo Pineda", "Axel Werner", "Diego Valdés"]
+            },
+            atlas: {
+                name: "Atlas",
+                history: "Atlas fue fundado en 1916 y es conocido por su cantera de jóvenes jugadores.",
+                players: ["Claudio Bravo", "Omar González", "Jair Pereira"]
+            },
+            juarez: {
+                name: "Juárez",
+                history: "Juárez fue fundado en 2015 y busca hacer su nombre en el fútbol mexicano.",
+                players: ["Carlos Salcedo", "Marco Fabián", "Alejandro Díaz"]
+            },
+            tijuana: {
+                name: "Tijuana",
+                history: "Tijuana fue fundado en 2007 y ha tenido un impacto rápido en la liga, conocido por su afición apasionada.",
+                players: ["Gonzalo Jara", "Julio César Furch", "Luciano Vietto"]
+            }
+        };
+
+        function showHistory(team) {
+            const teamData = histories[team];
+            document.getElementById("team-name").innerText = teamData.name;
+            document.getElementById("team-history").innerText = teamData.history;
+            const playersList = document.getElementById("team-players");
+            playersList.innerHTML = '';
+            teamData.players.forEach(player => {
+                const li = document.createElement("li");
+                li.innerText = player;
+                playersList.appendChild(li);
+            });
+            document.getElementById("history").style.display = "block";
+        }
+
+        function hideHistory() {
+            document.getElementById("history").style.display = "none";
+        }
+    </script>
+</body>
+</html>
